@@ -3,7 +3,7 @@
  * @Author: 小羽
  * @LastEditors: 小羽
  * @Date: 2021-03-05 00:22:45
- * @LastEditTime: 2021-03-05 00:40:09
+ * @LastEditTime: 2021-03-05 00:45:26
  */
 /*
  * @lc app=leetcode.cn id=125 lang=javascript
@@ -27,6 +27,15 @@ var isPalindrome = function(s) {
             return false
         }
     }
+    /* let left=0,right = s.length-1
+    while(left<right){
+        if(s[left]!==s[right]){
+            return false
+        }else{
+            left++;
+            right--
+        }
+    } */
     return true
 };
 // @lc code=end
