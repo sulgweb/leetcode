@@ -1,9 +1,9 @@
 /*
  * @Description: 
  * @Author: 小羽
- * @LastEditors: 小羽
+ * @LastEditors: Please set LastEditors
  * @Date: 2021-03-05 08:24:07
- * @LastEditTime: 2021-03-05 08:49:11
+ * @LastEditTime: 2021-03-05 10:00:41
  */
 /*
  * @lc app=leetcode.cn id=168 lang=javascript
@@ -16,20 +16,20 @@
  * @param {number} n
  * @return {string}
  */
+// 先利用ASCII码构建A-Z的数组
+// n-1后，n再取余，将符合数组中的下标
+
 var convertToTitle = function(n) {
-    let arr = [],res = "",index=1
+    let arr = [],res = ""
     for (let i = 65; i <= 90; i++) {
         arr.push(String.fromCharCode(i))
     }
-    while(n>26){
-        
-        res = arr[n%26-1]+res
-        n = n-(26**index)
-        index++
-        console.log(n,res)
+    while(n>0){
+        n--
+        res = arr[n%26]+res
+        n = Math.floor(n/26)
     }
-    return n?arr[n]+res:res
+    return res
 };
-console.log(convertToTitle(701))
 // @lc code=end
 
