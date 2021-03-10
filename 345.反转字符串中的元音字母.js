@@ -22,7 +22,7 @@ var reverseVowels = function(s) {
       right--
     }
     if(taget.includes(s[left])&&taget.includes(s[right])){
-      //console.log(s[right],s[left])
+      console.log(s[right],s[left]);
       // 通过结构的方式交换数据
       [s[right],s[left]] = [s[left],s[right]]
       left++
