@@ -9,35 +9,29 @@
  * @param {string} s
  * @return {string}
  */
+// 双指针
 var reverseVowels = function(s) {
-  let list = []
-  let obj = {
-    a:true,
-    e:true,
-    i:true,
-    o:true,
-    u:true
-  }
-  for(let i=0;i<s.length;i++){
-    if(obj[s[i]]){
-      list.push({
-        index:i,
-        value:s[i]
-      })
+  let left = 0,right = s.length-1;
+  let taget = ['a','e','i','o','u','A','E','I','O','U']
+  s = s.split("")
+  while(left<right){
+    if(!taget.includes(s[left])){
+      left++
+    }
+    if(!taget.includes(s[right])){
+      right--
+    }
+    if(taget.includes(s[left])&&taget.includes(s[right])){
+      //console.log(s[right],s[left])
+      // 通过结构的方式交换数据
+      [s[right],s[left]] = [s[left],s[right]]
+      left++
+      right--
+      
     }
   }
-  let len = Math.floor(list.length/2)
-  for(let i=0;i<len;i++){
-    let index = list[list.length-i-1].index
-    let value = list[list.length-i-1].value
-    let newData = s[list[i].index]
-    console.log(value,newData,list[i].index,index)
-    s[list[i].index] = value
-    s[index] = newData
-    console.log(s[list[i].index],s[index])
-  }
-  return s
+  return s.join("")
 };
-console.log(reverseVowels("hello"))
+console.log(reverseVowels("leetcode"))
 // @lc code=end
 
