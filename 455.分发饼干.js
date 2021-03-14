@@ -1,4 +1,11 @@
 /*
+ * @Description: 
+ * @Author: 小羽
+ * @LastEditors: 小羽
+ * @Date: 2021-03-14 14:51:46
+ * @LastEditTime: 2021-03-14 15:00:53
+ */
+/*
  * @lc app=leetcode.cn id=455 lang=javascript
  *
  * [455] 分发饼干
@@ -10,16 +17,19 @@
  * @param {number[]} s
  * @return {number}
  */
+// 数组排列后，使用贪心算法
 var findContentChildren = function(g, s) {
-  let gObj = {},sObj=[]
-  g.forEach(item=>{
-    gObj[item]?gObj[item]+=1:gObj=1
-  })
-  s.forEach(item=>{
-    sObj[item]?sObj[item]+=1:sObj=1
-  })
-  console.log(gObj,sObj)
+  g.sort((a,b) => (a-b));
+  s.sort((a,b) => (a-b));
+  let child = 0;
+  let cookie = 0;
+  while(child < g.length && cookie < s.length){
+      if(g[child] <= s[cookie]){
+          child++;
+      }
+      cookie++;
+  }
+  return child;
 };
-console.log(findContentChildren([1,2,3,3],[1,2,3,2,1]))
 // @lc code=end
 
