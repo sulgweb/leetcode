@@ -1,4 +1,11 @@
 /*
+ * @Description: 
+ * @Author: 小羽
+ * @LastEditors: 小羽
+ * @Date: 2021-03-20 15:54:53
+ * @LastEditTime: 2021-03-20 16:34:13
+ */
+/*
  * @lc app=leetcode.cn id=599 lang=javascript
  *
  * [599] 两个列表的最小索引总和
@@ -11,19 +18,22 @@
  * @return {string[]}
  */
 var findRestaurant = function(list1, list2) {
-  let obj={},res = []
-  for(let i=0;i<list1.length;i++){
-    obj[list1[i]]=i
+  let res = [], map = new Map(), min = Infinity;
+  for (let i = 0; i < list1.length; i++) {
+      map.set(list1[i], i);
   }
-  for(let i=0;i<list2.length;i++){
-    let item = list2[i]
-    if(obj[item]||obj[item]==0){
-      if(res)
-    }
+  for (let j = 0; j < list2.length; j++) {
+      let sum = j + map.get(list2[j]); // 求索引和
+      if (sum < min) { // 如果索引和小于最小值，重新存储
+          res = [list2[j]]; 
+          min = sum;
+      } else if (sum === min) { // 如果索引和与最小值相等，继续添加
+          res.push(list2[j]);
+      } else { // 如果索引和大于最小值，继续
+          continue;
+      }
   }
-  console.log(obj)
-  //return res
+  return res;
 };
-console.log(findRestaurant(["Shogun","Tapioca Express","Burger King","KFC"],["KFC","Shogun","Burger King"]))
 // @lc code=end
 
