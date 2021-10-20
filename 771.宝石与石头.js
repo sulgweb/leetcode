@@ -5,6 +5,7 @@
  */
 
 // 暴力解法，将字符串转数组，然后遍历
+// 字符串也可以用for-of进行遍历，因此不用转数组
 
 // @lc code=start
 /**
@@ -15,8 +16,7 @@
 var numJewelsInStones = function(jewels, stones) {
   let count = 0;
   const jewelsArr = jewels.split('')
-  const stonesArr = stones.split('')
-  for(let item of stonesArr){
+  for(let item of stones){
     if(jewelsArr.includes(item)){
       count ++
     }
