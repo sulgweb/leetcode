@@ -20,16 +20,16 @@
 // n-1后，n再取余，将符合数组中的下标
 
 var convertToTitle = function(n) {
-    let arr = [],res = ""
+    let arr = [],res = []
     for (let i = 65; i <= 90; i++) {
         arr.push(String.fromCharCode(i))
     }
     while(n>0){
         n--
-        res = arr[n%26]+res
+        res.unshift(arr[n%26])
         n = Math.floor(n/26)
     }
-    return res
+    return res.join('')
 };
 // @lc code=end
 

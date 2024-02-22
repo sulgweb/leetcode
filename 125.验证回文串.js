@@ -17,25 +17,17 @@
  * @return {boolean}
  */
 // 先进行大小写转换，然后正则表达式移除不进行对不的字符
-// 接下来就是遍历+收尾双向对比
+// 接下来就是遍历+首尾双向对比
 var isPalindrome = function(s) {
     if(s=="")return true
     s = s.toLowerCase().replace(/[^a-z0-9]/g,"")
-    let len = Math.floor(s.length/2)
-    for(let i=0;i<len;i++){
-        if(s[i]!==s[s.length-i-1]){
+    const len = s.length
+    const halfLen = Math.floor(len/2)
+    for(let i =0;i<halfLen;i++){
+        if(s[i]!==s[len-1-i]){
             return false
         }
     }
-    /* let left=0,right = s.length-1
-    while(left<right){
-        if(s[left]!==s[right]){
-            return false
-        }else{
-            left++;
-            right--
-        }
-    } */
     return true
 };
 // @lc code=end
