@@ -21,27 +21,46 @@
  // 第一次遍历构建obj对象
  // 1.不存在obj对应的key值，则进行obj对象的遍历，如果obj中某个key对应的值与t[i]相等则为false，不等就添加到obj对象中
  // 2.存在obj对应的key值，判断obj[s[i]] 与 t[i]是否相等
- var isIsomorphic = function(s, t) {
-    let obj = {}
-    for(let i = 0;i<t.length;i++){
-        if(!obj[s[i]]){
-            let tag = true
-            for(let index in obj){
-                if(obj[index]==t[i]){
-                    tag = false
-                }
-            }
-            if(tag){
-                obj[s[i]] = t[i]
-            }else{
-                return false
-            }
-        }else if(obj[s[i]] !== t[i]){
+//  var isIsomorphic = function(s, t) {
+//     let obj = {}
+//     for(let i = 0;i<t.length;i++){
+//         if(!obj[s[i]]){
+//             let tag = true
+//             for(let index in obj){
+//                 if(obj[index]==t[i]){
+//                     tag = false
+//                 }
+//             }
+//             if(tag){
+//                 obj[s[i]] = t[i]
+//             }else{
+//                 return false
+//             }
+//         }else if(obj[s[i]] !== t[i]){
+//             return false
+//         }
+//     }
+//     return true
+// };
+var isIsomorphic = function(s, t) {
+    if(s.length!==t.length){
+        return false
+    }
+    const s2t = {}
+    const t2s = {}
+    const len = s.length 
+    for(let i = 0;i<len;i++){
+        const si = s[i]
+        const ti = t[i]
+        if((s2t[si] && s2t[si]!== ti) || (t2s[ti] && t2s[ti] !== si )){
             return false
         }
+        s2t[si] = ti
+        t2s[ti] = si
     }
     return true
-};
+
+}
 /* console.log(isIsomorphic("foo","bar"))
 console.log(isIsomorphic("badc","baba"))
 console.log(isIsomorphic("paper","title")) */
