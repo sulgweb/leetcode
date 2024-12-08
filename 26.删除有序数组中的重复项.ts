@@ -6,6 +6,7 @@
 
 // @lc code=start
 // 暴力解法
+// 时间复杂度：O(n²)，空间复杂度O(n)
 // function removeDuplicates(nums: number[]): number {
 //   const obj = {};
 //   let i = 0;
@@ -21,6 +22,7 @@
 // }
 
 // 快慢指针
+// 时间复杂度O(n),空间复杂度O(1)
 function removeDuplicates(nums: number[]): number {
   let slow = 0;
   let fast = 0;
